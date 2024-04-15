@@ -8,8 +8,6 @@ import java.util.Set;
 import blusunrize.immersiveengineering.common.Config;
 import blusunrize.immersiveengineering.common.util.IELogger;
 import blusunrize.immersiveengineering.common.util.compat.computercraft.ComputercraftHelper;
-import blusunrize.immersiveengineering.common.util.compat.hydcraft.HydCraftHelper;
-import blusunrize.immersiveengineering.common.util.compat.mfr.MFRHelper;
 import blusunrize.immersiveengineering.common.util.compat.minetweaker.MTHelper;
 import blusunrize.immersiveengineering.common.util.compat.opencomputers.OCHelper;
 import blusunrize.immersiveengineering.common.util.compat.waila.WailaHelper;
@@ -23,19 +21,12 @@ public abstract class IECompatModule
 	static
 	{
 		moduleClasses.put("appliedenergistics2", AppliedEnergisticsHelper.class);
-		moduleClasses.put("MineFactoryReloaded", MFRHelper.class);
 		moduleClasses.put("MineTweaker3", MTHelper.class);
 		moduleClasses.put("denseores", DenseOresHelper.class);
-		moduleClasses.put("EE3", EE3Helper.class);
 		moduleClasses.put("ForgeMicroblock", FMPHelper.class);
 		moduleClasses.put("Forestry", ForestryHelper.class);
 		moduleClasses.put("BackTools", BacktoolsHelper.class);
 		moduleClasses.put("Waila", WailaHelper.class);
-		moduleClasses.put("gregtech", GregTechHelper.class);
-		moduleClasses.put("HydCraft", HydCraftHelper.class);
-		moduleClasses.put("ThermalExpansion", ThermalExpansionHelper.class);
-		moduleClasses.put("ThermalFoundation", ThermalFoundationHelper.class);
-		moduleClasses.put("ThermalDynamics", ThermalDynamicsHelper.class);
 		moduleClasses.put("IC2", IC2Helper.class);
 		moduleClasses.put("chisel", ChiselHelper.class);
 		moduleClasses.put("harvestcraft", HarvestCraftHelper.class);
@@ -48,10 +39,8 @@ public abstract class IECompatModule
 		moduleClasses.put("ExtraUtilities", ExtraUtilsHelper.class);
 		moduleClasses.put("Thaumcraft", ThaumcraftHelper.class);
 		moduleClasses.put("TConstruct", TConstructHelper.class);
-		moduleClasses.put("Mekanism", MekanismHelper.class);
 		moduleClasses.put("cuttingedge", CuttingEdgeHelper.class);
 		moduleClasses.put("Railcraft", RailcraftHelper.class);
-		moduleClasses.put("Avaritia", AvaritiaHelper.class);
 		moduleClasses.put("ComputerCraft", ComputercraftHelper.class);
 		moduleClasses.put("OpenComputers", OCHelper.class);
 	}
