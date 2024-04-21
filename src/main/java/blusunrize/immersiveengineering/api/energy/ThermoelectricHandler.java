@@ -35,11 +35,17 @@ public class ThermoelectricHandler
 
 	public static int getTemperature(Block block, int meta)
 	{
-		for(int oreID : OreDictionary.getOreIDs(new ItemStack(block, 1, meta)))
-			if(temperatureMap.containsKey(OreDictionary.getOreName(oreID)))
+		for(int oreID : OreDictionary.getOreIDs(new ItemStack(block, 1, meta))) {
+			if(temperatureMap.containsKey(OreDictionary.getOreName(oreID))) {
 				return temperatureMap.get(OreDictionary.getOreName(oreID));
-		if(temperatureMap.containsKey(ApiUtils.nameFromStack(new ItemStack(block, 1, meta))+"::"+meta))
-			return temperatureMap.get(ApiUtils.nameFromStack(new ItemStack(block, 1, meta))+"::"+meta);
+			}
+		}
+
+		final String name = ApiUtils.nameFromStack(new ItemStack(block, 1, meta))+"::"+meta;
+		if(temperatureMap.containsKey(name)) {
+			return temperatureMap.get(name);
+		}
+
 		return -1;
 	}
 	public static Map<String, Integer> getThermalValuesSorted(boolean inverse)

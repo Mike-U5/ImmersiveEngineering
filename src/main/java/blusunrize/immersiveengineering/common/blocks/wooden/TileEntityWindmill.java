@@ -19,17 +19,16 @@ public class TileEntityWindmill extends TileEntityIEBase {
 	public boolean canTurn = false;
 
 	@Override
-	public void updateEntity() {
-		if (worldObj.getTotalWorldTime() % 128 == ((xCoord ^ zCoord) & 127))
+	public void updateEntity() {		
+		if (worldObj.getTotalWorldTime() % 128 == ((xCoord ^ zCoord) & 127)) {
 			canTurn = checkArea();
-		if (!canTurn)
-			return;
-
-		double mod = .0001;
-		
-		if (this.worldObj.provider.hasNoSky || this.worldObj.provider.dimensionId <= 0) {
-			mod = 0;
 		}
+
+		if (!canTurn) {
+			return;
+		}
+
+		double mod = 0.00005D;
 
 		if (!worldObj.isRaining()) {
 			mod *= .75;
@@ -69,6 +68,10 @@ public class TileEntityWindmill extends TileEntityIEBase {
 	}
 
 	public boolean checkArea() {
+		if (this.worldObj.provider.hasNoSky || this.worldObj.provider.dimensionId < 0) {
+			return false;
+		}
+		
 		turnSpeed = 0;
 		for (int hh = -6; hh <= 6; hh++) {
 			int r = Math.abs(hh) == 6 ? 1 : Math.abs(hh) == 5 ? 3 : Math.abs(hh) == 4 ? 4 : Math.abs(hh) > 1 ? 5 : 6;
@@ -96,11 +99,13 @@ public class TileEntityWindmill extends TileEntityIEBase {
 					}
 				}
 			}
-			if (blocked > 100)
+			if (blocked > 100) {
 				return false;
+			}
 		}
-		if (turnSpeed <= 0)
+		if (turnSpeed <= 0) {
 			return false;
+		}
 
 		return true;
 	}
@@ -108,7 +113,6 @@ public class TileEntityWindmill extends TileEntityIEBase {
 	@Override
 	public void readCustomNBT(NBTTagCompound nbt, boolean descPacket) {
 		facing = nbt.getInteger("facing");
-		// prevRotation = nbt.getFloat("prevRotation");
 		rotation = nbt.getFloat("rotation");
 		turnSpeed = nbt.getFloat("turnSpeed");
 	}
@@ -116,7 +120,6 @@ public class TileEntityWindmill extends TileEntityIEBase {
 	@Override
 	public void writeCustomNBT(NBTTagCompound nbt, boolean descPacket) {
 		nbt.setInteger("facing", facing);
-		// nbt.setFloat("prevRotation", prevRotation);
 		nbt.setFloat("rotation", rotation);
 		nbt.setFloat("turnSpeed", turnSpeed);
 	}
@@ -136,8 +139,5 @@ public class TileEntityWindmill extends TileEntityIEBase {
 	@Override
 	public double getMaxRenderDistanceSquared() {
 		return super.getMaxRenderDistanceSquared() * Config.getDouble("increasedTileRenderdistance");
-//		if(Config.getBoolean("increasedTileRenderdistance"))
-//			return super.getMaxRenderDistanceSquared()*1.5;
-//		return super.getMaxRenderDistanceSquared();
 	}
 }

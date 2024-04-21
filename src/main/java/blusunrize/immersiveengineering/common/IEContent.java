@@ -590,12 +590,15 @@ public class IEContent
 
 		DieselHandler.addRefineryRecipe(new FluidStack(fluidPlantoil,8), new FluidStack(fluidEthanol,8), new FluidStack(fluidBiodiesel,16));
 
+		// lava is 1300
 		ThermoelectricHandler.registerSourceInKelvin("blockIce", 273);
 		ThermoelectricHandler.registerSourceInKelvin("blockPackedIce", 200);
-		ThermoelectricHandler.registerSourceInKelvin("blockPlutonium", 4000);
-		ThermoelectricHandler.registerSourceInKelvin("blockBlutonium", 4000);
-		ThermoelectricHandler.registerSourceInKelvin("blockUranium", 2000);
-		ThermoelectricHandler.registerSourceInKelvin("blockYellorium", 2000);
+		ThermoelectricHandler.registerSourceInKelvin("blockDenseIce", 50);
+		ThermoelectricHandler.registerSourceInKelvin("blockBlazeLamp", 1500);
+//		ThermoelectricHandler.registerSourceInKelvin("blockPlutonium", 4000);
+//		ThermoelectricHandler.registerSourceInKelvin("blockBlutonium", 4000);
+//		ThermoelectricHandler.registerSourceInKelvin("blockUranium", 2000);
+//		ThermoelectricHandler.registerSourceInKelvin("blockYellorium", 2000);
 
 		ExcavatorHandler.mineralVeinCapacity = Config.getInt("excavator_depletion");
 		ExcavatorHandler.addMineral("Iron", 25, .1f, new String[]{"oreIron","oreNickel","oreTin","denseoreIron"}, new float[]{.5f,.25f,.20f,.05f});
