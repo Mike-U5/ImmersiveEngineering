@@ -51,6 +51,10 @@ public abstract class BlockIEBase extends BlockContainer
 		this.setBlockName(ImmersiveEngineering.MODID+"."+name);
 		GameRegistry.registerBlock(this, itemBlock, name);
 		this.setCreativeTab(ImmersiveEngineering.creativeTab);
+		
+		if (this.blockResistance < 6F) {
+			this.blockResistance = 6F;
+		}
 	}
 
 	public BlockIEBase setFlammable(boolean b)
