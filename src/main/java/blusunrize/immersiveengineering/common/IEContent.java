@@ -24,6 +24,7 @@ import blusunrize.immersiveengineering.common.blocks.BlockFakeLight;
 import blusunrize.immersiveengineering.common.blocks.BlockFakeLight.TileEntityFakeLight;
 import blusunrize.immersiveengineering.common.blocks.BlockIEBase;
 import blusunrize.immersiveengineering.common.blocks.BlockIEBase.BlockIESimple;
+import blusunrize.immersiveengineering.common.blocks.BlockIELadder;
 import blusunrize.immersiveengineering.common.blocks.BlockIESlabs;
 import blusunrize.immersiveengineering.common.blocks.BlockIEStairs;
 import blusunrize.immersiveengineering.common.blocks.BlockStorage;
@@ -172,6 +173,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class IEContent
 {
+	public static BlockIELadder blockLadder;
 	public static BlockIEBase blockOres;
 	public static BlockIEBase blockStorage;
 	public static BlockIEBase blockStorageSlabs;
@@ -227,10 +229,11 @@ public class IEContent
 
 	public static void preInit()
 	{
-		blockOres = (BlockIEBase) new BlockIESimple("ore",Material.rock,ItemBlockIEBase.class, "Copper","Aluminum","Lead","Silver","Nickel").setHardness(3f).setResistance(5f);
-		blockStorage = (BlockIEBase) new BlockStorage("Copper","Aluminum","Lead","Silver","Nickel","Constantan","Electrum","Steel", "CoilCopper","CoilElectrum","CoilHV").setHardness(4f).setResistance(5f);
-		blockStorageSlabs = (BlockIEBase) new BlockIESlabs("storageSlab","storage_",Material.iron,"Copper","Aluminum","Lead","Silver","Nickel","Constantan","Electrum","Steel").setHardness(4f).setResistance(5f);
-		blockStoneSlabs = (BlockIEBase) new BlockIESlabs("stoneSlab", "stoneDecoration_", Material.rock, "hempcrete", "concrete", "concreteTile").setHardness(4f).setResistance(5f);
+		blockLadder = new BlockIELadder("treatedLadder");
+		blockOres = (BlockIEBase) new BlockIESimple("ore",Material.rock,ItemBlockIEBase.class, "Copper","Aluminum","Lead","Silver","Nickel").setHardness(3f).setResistance(10f);
+		blockStorage = (BlockIEBase) new BlockStorage("Copper","Aluminum","Lead","Silver","Nickel","Constantan","Electrum","Steel", "CoilCopper","CoilElectrum","CoilHV").setHardness(4f).setResistance(10f);
+		blockStorageSlabs = (BlockIEBase) new BlockIESlabs("storageSlab","storage_",Material.iron,"Copper","Aluminum","Lead","Silver","Nickel","Constantan","Electrum","Steel").setHardness(4f).setResistance(10f);
+		blockStoneSlabs = (BlockIEBase) new BlockIESlabs("stoneSlab", "stoneDecoration_", Material.rock, "hempcrete", "concrete", "concreteTile").setHardness(4f).setResistance(20f);
 		blockMetalDevice = new BlockMetalDevices();
 		blockMetalDevice2 = new BlockMetalDevices2();
 		blockMetalDecoration = new BlockMetalDecoration();
@@ -238,7 +241,7 @@ public class IEContent
 		blockMetalMultiblocks = new BlockMetalMultiblocks();
 		blockWoodenDevice = new BlockWoodenDevices().setFlammable(true);
 		blockWoodenDecoration = new BlockWoodenDecoration().setFlammable(true);
-		blockTreatedWood = (BlockIEBase)new BlockIESimple("treatedWood",Material.wood,ItemBlockIEBase.class, "0","1","2").setFlammable(true).setHasFlavour(true).setHardness(2f).setResistance(5f);
+		blockTreatedWood = (BlockIEBase)new BlockIESimple("treatedWood",Material.wood,ItemBlockIEBase.class, "0","1","2").setFlammable(true).setHasFlavour(true).setHardness(2f).setResistance(10f);
 		blockWoodenStair = new BlockIEStairs("woodenStairs",blockTreatedWood,0).setFlammable(true).setHasFlavour(true);
 		blockWoodenStair1 = new BlockIEStairs("woodenStairs1",blockTreatedWood,1).setFlammable(true).setHasFlavour(true);
 		blockWoodenStair2 = new BlockIEStairs("woodenStairs2",blockTreatedWood,2).setFlammable(true).setHasFlavour(true);

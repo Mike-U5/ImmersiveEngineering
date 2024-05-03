@@ -45,7 +45,7 @@ public class BlockWoodenDevices extends BlockIEBase implements IPostBlock, blusu
 	{
 		super("woodenDevice", Material.wood, Config.getBoolean("christmas")?2:1, ItemBlockWoodenDevices.class, "post","watermill","windmill","windmillAdvanced","crate","modificationWorkbench","barrel");
 		this.setHardness(2.0F);
-		this.setResistance(5.0F);
+		this.setResistance(10.0F);
 		this.setMetaLightOpacity(4, 255);
 		this.setMetaLightOpacity(6, 255);
 	}

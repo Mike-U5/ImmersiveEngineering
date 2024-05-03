@@ -36,7 +36,7 @@ public class BlockWoodenDecoration extends BlockIEBase implements blusunrize.aqu
 				"slab0","slab1","doubleSlab",
 				"scaffolding","wallMount");
 		this.setHardness(2.0F);
-		this.setResistance(5.0F);
+		this.setResistance(10.0F);
 	}
 
 	@Override

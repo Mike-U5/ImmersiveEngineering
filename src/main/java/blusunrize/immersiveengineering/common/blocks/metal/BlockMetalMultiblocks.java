@@ -59,7 +59,7 @@ public class BlockMetalMultiblocks extends BlockIEBase implements ICustomBoundin
 				"crusher","bucketWheel","excavator","arcFurnace",
 				"tank","silo","assembler","bottlingMachine","metalPress");
 		setHardness(3.0F);
-		setResistance(15.0F);
+		setResistance(20.0F);
 	}
 
 

@@ -113,6 +113,8 @@ tile.ImmersiveEngineering.woodenStairs.name=Treated Wood Stairs
 tile.ImmersiveEngineering.woodenStairs1.name=Treated Wood Stairs
 tile.ImmersiveEngineering.woodenStairs2.name=Treated Wood Stairs
 
+tile.ImmersiveEngineering.treatedLadder.name=Treated Wood Ladder
+
 tile.ImmersiveEngineering.stoneDevice.hempcrete.name=Hempcrete
 tile.ImmersiveEngineering.stoneDevice.cokeOven.name=Coke Oven
 tile.ImmersiveEngineering.stoneDevice.blastFurnace.name=Crude Blast Furnace

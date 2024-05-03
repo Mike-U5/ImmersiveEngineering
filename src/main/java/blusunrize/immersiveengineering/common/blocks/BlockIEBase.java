@@ -49,10 +49,6 @@ public abstract class BlockIEBase extends BlockContainer {
 		this.setBlockName(ImmersiveEngineering.MODID + "." + name);
 		GameRegistry.registerBlock(this, itemBlock, name);
 		this.setCreativeTab(ImmersiveEngineering.creativeTab);
-
-		if (this.blockResistance < 6F) {
-			this.blockResistance = 6F;
-		}
 	}
 
 	public BlockIEBase setFlammable(boolean b) {
@@ -294,8 +290,9 @@ public abstract class BlockIEBase extends BlockContainer {
 	public static class BlockIESimple extends BlockIEBase {
 		public BlockIESimple(String name, Material mat, Class<? extends ItemBlockIEBase> itemBlock, String... subNames) {
 			super(name, mat, 1, itemBlock, subNames);
-			for (int i = 0; i < subNames.length; i++)
+			for (int i = 0; i < subNames.length; i++) {
 				this.setMetaLightOpacity(i, 255);
+			}
 		}
 
 		@Override
