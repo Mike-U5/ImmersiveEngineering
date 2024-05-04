@@ -118,8 +118,8 @@ public class TileEntityMetalPress extends TileEntityMultiblockPart implements IS
 				if ((perTick == 0 || this.energyStorage.extractEnergy(perTick, true) == perTick) && process[i] >= 0) {
 					this.energyStorage.extractEnergy(perTick, false);
 					
-					if (this.process[i] == 60) {
-						this.worldObj.playSoundEffect(this.xCoord, this.yCoord, this.zCoord, "immersiveengineering:metalPress", 1F, 1F);
+					if (this.process[i] == 59) {
+						this.worldObj.playSoundEffect(this.xCoord, this.yCoord, this.zCoord, "immersiveengineering:metalPress", 0.8F, 1F);
 					}
 				
 					if (process[i]++ == 60 && curRecipes[i] != null) {
