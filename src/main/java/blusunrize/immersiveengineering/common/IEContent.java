@@ -294,7 +294,7 @@ public class IEContent
 			@Override
 			public int getItemStackLimit(ItemStack stack)
 			{
-				return stack.getItemDamage()%2==0?16:1;
+				return (stack.getItemDamage() % 2 == 0) ? 64 : 1;
 			}
 		};
 		itemDrill = new ItemDrill();
