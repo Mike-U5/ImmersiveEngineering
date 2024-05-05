@@ -110,16 +110,14 @@ public class BlockIECrop extends BlockBush implements IGrowable {
 
 	@Override
 	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
-		ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
-		if (metadata >= 4) {
-			for (int i = 0; i < 3 + fortune; ++i) {
-				if (world.rand.nextInt(8) <= metadata) {
-					ret.add(new ItemStack(IEContent.itemMaterial, 1, 3));
-				}
-			}
+		final ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
 
-			ret.add(new ItemStack(IEContent.itemSeeds, 1, 0));
+		if (metadata >= 4) {
+			final int quantity = (metadata >= 5 || world.rand.nextBoolean()) ? 2 : 1;
+			ret.add(new ItemStack(IEContent.itemMaterial, quantity, 3));
 		}
+		
+		ret.add(new ItemStack(IEContent.itemSeeds, 1, 0));
 
 		return ret;
 	}
