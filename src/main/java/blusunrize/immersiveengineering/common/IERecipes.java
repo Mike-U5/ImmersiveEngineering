@@ -152,9 +152,10 @@ public class IERecipes
 		addOredictRecipe(new ItemStack(IEContent.itemMaterial,1,10), "I  ","II "," II", 'I',"ingotSteel");
 		addOredictRecipe(componentIron, "I I"," C ","I I", 'I',"ingotIron",'C',"ingotCopper");
 		addOredictRecipe(componentSteel, "I I"," C ","I I", 'I',"ingotSteel",'C',"ingotCopper");
-		addOredictRecipe(new ItemStack(IEContent.itemMaterial,4,14), "I","I", 'I',"ingotIron");
-		addOredictRecipe(new ItemStack(IEContent.itemMaterial,4,15), "I","I", 'I',"ingotSteel");
-		addOredictRecipe(new ItemStack(IEContent.itemMaterial,4,16), "I","I", 'I',"ingotAluminum");
+
+		addOredictRecipe(new ItemStack(IEContent.itemMaterial,3,14), "I","I", 'I',"ingotIron");
+		addOredictRecipe(new ItemStack(IEContent.itemMaterial,3,15), "I","I", 'I',"ingotSteel");
+		addOredictRecipe(new ItemStack(IEContent.itemMaterial,3,16), "I","I", 'I',"ingotAluminum");
 
 		addOredictRecipe(new ItemStack(IEContent.itemWireCoil,4,0), " I ","ISI"," I ", 'I',"ingotCopper", 'S',"stickWood");
 		addOredictRecipe(new ItemStack(IEContent.itemWireCoil,4,1), " I ","ISI"," I ", 'I',"ingotElectrum", 'S',"stickWood");
@@ -513,7 +514,7 @@ public class IERecipes
 					if(ApiUtils.isExistingOreName("ingot"+ore))
 					{
 						registeredMoldBases.putAll("rod",OreDictionary.getOres(name));
-						MetalPressRecipe.addRecipe(Utils.copyStackWithAmount(IEApi.getPreferredOreStack(name),2), "ingot"+ore, new ItemStack(IEContent.itemMold,1,2), 2400);
+						//MetalPressRecipe.addRecipe(Utils.copyStackWithAmount(IEApi.getPreferredOreStack(name),2), "ingot"+ore, new ItemStack(IEContent.itemMold,1,2), 2400);
 					}
 				}
 		boolean addedAny = false;
