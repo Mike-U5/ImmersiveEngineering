@@ -42,8 +42,8 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemRevolver extends ItemUpgradeableTool implements IShaderEquipableItem, ITool {
-	private static final int FIRING_DELAY = 20;
-	private int cooldown = 0;
+	private static final int FIRING_DELAY = 17;
+	public int cooldown = 0;
 	
 	public ItemRevolver() {
 		super("revolver", 1, "REVOLVER", "normal", "speedloader");

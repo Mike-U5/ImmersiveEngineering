@@ -35,8 +35,11 @@ public class ItemRenderRevolver implements IItemRenderer {
 
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
+		final ItemRevolver revolver = (ItemRevolver) item.getItem();
+		
 		GL11.glPushMatrix();
 		if (type == ItemRenderType.EQUIPPED_FIRST_PERSON) {
+			///GL11.glRotatef(-135 - revolver.cooldown, 0, 1, 0);
 			GL11.glRotatef(-135, 0, 1, 0);
 		} else {
 			GL11.glRotatef(45, 0, 1, 0);
@@ -71,9 +74,9 @@ public class ItemRenderRevolver implements IItemRenderer {
 		GL11.glEnable(3042);
 		OpenGlHelper.glBlendFunc(770, 771, 0, 1);
 
-		IIcon icon = ((ItemRevolver) item.getItem()).getRevolverIcon(item);
-		String[] parts = ((ItemRevolver) item.getItem()).compileRender(item);
-		ItemStack shader = ((ItemRevolver) item.getItem()).getShaderItem(item);
+		IIcon icon = revolver.getRevolverIcon(item);
+		String[] parts = revolver.compileRender(item);
+		ItemStack shader = revolver.getShaderItem(item);
 		ShaderCase sCase = (shader != null && shader.getItem() instanceof IShaderItem) ? ((IShaderItem) shader.getItem()).getShaderCase(shader, item, "revolver") : null;
 
 		if (sCase == null) {
