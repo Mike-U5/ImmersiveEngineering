@@ -22,7 +22,7 @@ public class TileEntitySilo extends TileEntityMultiblockPart implements ISidedIn
 {
 	public ItemStack identStack;
 	public int storageAmount = 0;
-	static int maxStorage = 41472;
+	public static int MAX_STORAGE = 1000000;
 	ItemStack inputStack;
 	ItemStack outputStack;
 	ItemStack prevInputStack;
@@ -229,7 +229,7 @@ public class TileEntitySilo extends TileEntityMultiblockPart implements ISidedIn
 	@Override
 	public int getInventoryStackLimit()
 	{
-		return maxStorage;
+		return MAX_STORAGE;
 	}
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer player)
@@ -262,7 +262,7 @@ public class TileEntitySilo extends TileEntityMultiblockPart implements ISidedIn
 			return false;
 		TileEntitySilo master = master();
 		if(master!=null)
-			return master.identStack==null || (OreDictionary.itemMatches(master.identStack, stack, true) && ItemStack.areItemStackTagsEqual(stack, master.identStack)&& master.storageAmount<maxStorage); 
+			return master.identStack==null || (OreDictionary.itemMatches(master.identStack, stack, true) && ItemStack.areItemStackTagsEqual(stack, master.identStack)&& master.storageAmount<MAX_STORAGE); 
 		return false; 
 	}
 	@Override
@@ -288,25 +288,25 @@ public class TileEntitySilo extends TileEntityMultiblockPart implements ISidedIn
 			if(this.identStack==null)
 				identStack = inputStack;
 
-			if((maxStorage-storageAmount)>0)
+			if((MAX_STORAGE-storageAmount)>0)
 			{
 				if(prevInputStack==null)//inputStack is new
 					storageAmount += inputStack.stackSize;
 				else
 					storageAmount += inputStack.stackSize - prevInputStack.stackSize;
 
-				if(storageAmount>maxStorage)
-					storageAmount = maxStorage;
+				if(storageAmount>MAX_STORAGE)
+					storageAmount = MAX_STORAGE;
 			}
 			//Set new fake inputs
-			if((maxStorage-storageAmount)>=identStack.getMaxStackSize())
+			if((MAX_STORAGE-storageAmount)>=identStack.getMaxStackSize())
 			{
 				inputStack = null;
 				prevInputStack = null;
 			}
 			else
 			{
-				inputStack = Utils.copyStackWithAmount(identStack, identStack.getMaxStackSize()-(maxStorage-storageAmount));
+				inputStack = Utils.copyStackWithAmount(identStack, identStack.getMaxStackSize()-(MAX_STORAGE-storageAmount));
 				prevInputStack = inputStack.copy();
 			}
 		}
@@ -386,8 +386,8 @@ public class TileEntitySilo extends TileEntityMultiblockPart implements ISidedIn
 			return;
 		}
 		updateComparatorValuesPart1();
-		if(amount > maxStorage)
-			amount = maxStorage;
+		if(amount > MAX_STORAGE)
+			amount = MAX_STORAGE;
 		this.storageAmount = amount;
 		this.forceUpdate = true;
 		this.markDirty();
@@ -405,8 +405,8 @@ public class TileEntitySilo extends TileEntityMultiblockPart implements ISidedIn
 		}
 		updateComparatorValuesPart1();
 		this.identStack = Utils.copyStackWithAmount(type, 0);
-		if(amount > maxStorage)
-			amount = maxStorage;
+		if(amount > MAX_STORAGE)
+			amount = MAX_STORAGE;
 		this.storageAmount = amount;
 		this.forceUpdate = true;
 		this.markDirty();
@@ -416,18 +416,18 @@ public class TileEntitySilo extends TileEntityMultiblockPart implements ISidedIn
 	@Override
 	public int getMaxStoredCount()
 	{
-		return maxStorage;
+		return MAX_STORAGE;
 	}
 
 	public int getComparatorOutput() {
 		if (pos==4)
 		{
-			return (15*storageAmount)/maxStorage;
+			return (15*storageAmount)/MAX_STORAGE;
 		}
 		TileEntitySilo master = master();
 		if (offset[1]>=1&&offset[1]<=6&&master!=null) { //6 layers of storage
 			int layer = offset[1]-1;
-			int vol = maxStorage/6;
+			int vol = MAX_STORAGE/6;
 			int filled = master.storageAmount-layer*vol;
 			int ret = Math.min(15, Math.max(0, (15*filled)/vol));
 			return ret;
@@ -436,17 +436,17 @@ public class TileEntitySilo extends TileEntityMultiblockPart implements ISidedIn
 	}
 	private void updateComparatorValuesPart1() {
 		//		oldComps = new int[6];
-		int vol = maxStorage / 6;
+		int vol = MAX_STORAGE / 6;
 		for (int i = 0; i < 6; i++)
 		{
 			int filled = storageAmount - i * vol;
 			oldComps[i] = Math.min(15, Math.max((15*filled)/vol, 0));
 		}
-		masterCompOld = (15*storageAmount)/maxStorage;
+		masterCompOld = (15*storageAmount)/MAX_STORAGE;
 	}
 	private void updateComparatorValuesPart2() {
-		int vol = maxStorage / 6;
-		if ((15*storageAmount)/maxStorage!=masterCompOld)
+		int vol = MAX_STORAGE / 6;
+		if ((15*storageAmount)/MAX_STORAGE!=masterCompOld)
 			worldObj.func_147453_f(xCoord, yCoord, zCoord, getBlockType());
 		for (int i = 0; i < 6; i++)
 		{

@@ -39,14 +39,14 @@ public class ItemRenderRevolver implements IItemRenderer {
 		
 		GL11.glPushMatrix();
 		if (type == ItemRenderType.EQUIPPED_FIRST_PERSON) {
-			///GL11.glRotatef(-135 - revolver.cooldown, 0, 1, 0);
-			GL11.glRotatef(-135, 0, 1, 0);
+			GL11.glRotatef(-135 - revolver.cooldown, 0, 1, 0);
+			//GL11.glRotatef(-135, 0, 1, 0);
 		} else {
 			GL11.glRotatef(45, 0, 1, 0);
 		}
 
 		if (type == ItemRenderType.EQUIPPED_FIRST_PERSON) {
-			GL11.glTranslatef(-1.15f, .5f, -1f);
+			GL11.glTranslatef(-1.15f, .5f - ((((float)revolver.cooldown) / ((float)ItemRevolver.FIRING_DELAY)) / 3F), -1f);
 			GL11.glScalef(.625f, .75f, .75f);
 		} else if (type == ItemRenderType.EQUIPPED) {
 			GL11.glRotatef(-90, 0, 1, 0);
