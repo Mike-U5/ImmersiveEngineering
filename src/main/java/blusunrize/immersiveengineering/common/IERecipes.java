@@ -62,7 +62,7 @@ public class IERecipes
 		GameRegistry.addRecipe(new RecipeRevolver());
 		RecipeSorter.register(ImmersiveEngineering.MODID+":revolverLoop", RecipeRevolver.class, RecipeSorter.Category.SHAPELESS, "after:forge:shapelessore");
 
-		addOredictRecipe(new ItemStack(IEContent.itemBullet,3,0), "I I","I I"," I ", 'I',"ingotCopper");
+		addOredictRecipe(new ItemStack(IEContent.itemBullet,5,0), "I I","I I"," I ", 'I',"ingotCopper");
 		addOredictRecipe(new ItemStack(IEContent.itemBullet,3,1), "PDP","PDP"," I ", 'I',"ingotCopper",'P',Items.paper,'D',"dyeRed");
 
 
@@ -421,6 +421,9 @@ public class IERecipes
 	{
 		final boolean allowHammerCrushing = !Config.getBoolean("disableHammerCrushing");
 		ArrayListMultimap<String, ItemStack> registeredMoldBases = ArrayListMultimap.create();
+		
+		MetalPressRecipe.addRecipe(new ItemStack(IEContent.itemBullet, 2), "ingotCopper", new ItemStack(IEContent.itemMold,1,3), 2400);
+		
 		for(String name : OreDictionary.getOreNames())
 			if(ApiUtils.isExistingOreName(name))
 				if(name.startsWith("ore"))
